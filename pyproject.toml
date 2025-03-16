@@ -1,0 +1,11 @@
+[project]
+name = "exco-again"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "aiogram>=3.18.0",
+    "asyncio>=3.4.3",
+    "pydantic-settings>=2.8.1",
+]
