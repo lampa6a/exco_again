@@ -3,7 +3,7 @@ from aiogram import Router
 from aiogram import F
 from aiogram.filters.command import CommandStart
 from aiogram.types import Message
-from keyboards.start_keyboard import start_kb_gen, profile_back_kb
+from keyboards.start_keyboards import start_kb_gen, profile_back_kb
 from profile_text import text
 
 rt = Router()
@@ -39,5 +39,10 @@ async def profile_button(callback: CallbackQuery):
         )
         photo_ids.append(result.photo[-1].file_id)
     await callback.answer()
+
+@rt.callback_query(F.data == "back_profile")
+async def back_profile(callback: CallbackQuery):
+    await callback.message.delete()
+    await profile_button()
 
 

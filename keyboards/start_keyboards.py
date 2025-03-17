@@ -13,19 +13,10 @@ async def start_kb_gen():
 async def profile_back_kb():
     kb = [
         [
-            InlineKeyboardButton(text="Назад", callback_data="back_to_profile"),
+            InlineKeyboardButton(text="Назад", callback_data="back_for_profile"),
             InlineKeyboardButton(text="Изменить", callback_data="change_profile")
         ]
     ]
     keyboard = InlineKeyboardMarkup(inline_keyboard=kb)
     return keyboard
 
-async def yes_or_no_kb():
-    kb = [
-        [
-            InlineKeyboardButton(text="Да", callback_data="yes"),
-            InlineKeyboardButton(text="Нет", callback_data="no")
-        ]
-    ]
-    keyboard = InlineKeyboardMarkup(inline_keyboard=kb)
-    return keyboard

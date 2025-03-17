@@ -8,7 +8,7 @@ from aiogram import Bot, Dispatcher
 from aiogram.enums import ParseMode
 from aiogram.client.default import DefaultBotProperties
 
-from handlers import prof_handlers, start_handlers_with_problems
+from handlers import profile_handlers, start_handlers
 
 # Для записей с типом Secret* необходимо 
 # вызывать метод get_secret_value(), 
@@ -22,7 +22,8 @@ bot = Bot(token=config.bot_token.get_secret_value(),
 logging.basicConfig(level=logging.INFO)
 # Диспетчер
 dp = Dispatcher()  
-dp.include_routers(start_handlers_with_problems.rt, prof_handlers.rt)
+dp.include_routers(start_handlers.rt, 
+                   profile_handlers.rt)
 dp["started_at"] = datetime.now().strftime("%Y-%m-%d %H:%M")
 
 async def main():
