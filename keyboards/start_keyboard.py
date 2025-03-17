@@ -1,11 +1,7 @@
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+from profile_text import start_button_dict
 
-start_button_dict = {
-    'Профиль': 'profile',
-    'Банк': 'bank',
-    'магазин': 'shop',
-                    }
 
 async def start_kb_gen():
     builder = InlineKeyboardBuilder()
@@ -17,8 +13,18 @@ async def start_kb_gen():
 async def profile_back_kb():
     kb = [
         [
-            InlineKeyboardButton(text="Назад", callback_data="back"),
-            InlineKeyboardButton(text="Изменить", callback_data="change")
+            InlineKeyboardButton(text="Назад", callback_data="back_to_profile"),
+            InlineKeyboardButton(text="Изменить", callback_data="change_profile")
+        ]
+    ]
+    keyboard = InlineKeyboardMarkup(inline_keyboard=kb)
+    return keyboard
+
+async def yes_or_no_kb():
+    kb = [
+        [
+            InlineKeyboardButton(text="Да", callback_data="yes"),
+            InlineKeyboardButton(text="Нет", callback_data="no")
         ]
     ]
     keyboard = InlineKeyboardMarkup(inline_keyboard=kb)

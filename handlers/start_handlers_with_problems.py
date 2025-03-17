@@ -4,15 +4,13 @@ from aiogram import F
 from aiogram.filters.command import CommandStart
 from aiogram.types import Message
 from keyboards.start_keyboard import start_kb_gen, profile_back_kb
+from profile_text import text
 
 rt = Router()
 
-text = (
-"Ваш профиль:\n"
-"Ник: username\n"
-"Статус:\n"
-"Дата регистрации: DD.MM.YYYY"
-)
+
+photo_ids = []
+
 
 @rt.message(CommandStart())
 async def start_keyboard(message: Message):
@@ -39,6 +37,7 @@ async def profile_button(callback: CallbackQuery):
                 parse_mode="Markdown",
                 reply_markup=await profile_back_kb()
         )
+        photo_ids.append(result.photo[-1].file_id)
     await callback.answer()
 
 
